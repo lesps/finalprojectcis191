@@ -10,6 +10,13 @@ int main(int argc, char **argv) {
     return 1;
   }
 
+  /* If there is only one argument, also complain and exit. */
+  if (argc == 2) {
+    fprintf(stderr,
+            "Error: no arguments specified after argument to ignore.\n");
+    return 1;
+  }
+
   printf("Adjusted argument list was \"");
   char *to_remove = argv[1];
   for (; i < argc; ++i)
