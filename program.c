@@ -3,12 +3,19 @@
 #include <string.h>
 #include <unistd.h>
 
+/* This program filters an argument list by removing any strings matching
+ * the first argument
+ */
 int main(int argc, char **argv) {
+  /* The element at argv[1] is the string to remove, if present */
+
   int i = 1;
   unsigned arg_count = 0;
 
   char *to_remove = argv[1];
   char **arglist = malloc(sizeof(char *) * argc);
+
+  /* Print out list of arguments; eventually, convert this to execve()*/
   for (; i < argc; ++i)
     if (strcmp(to_remove, argv[i])) {
       arglist[arg_count] = argv[i];
