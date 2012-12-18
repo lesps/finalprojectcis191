@@ -15,6 +15,18 @@ int main(int argc, char **argv) {
   char *to_remove = argv[1];
   char **arglist = malloc(sizeof(char *) * argc);
 
+  /* If no arguments are given, complain and exit. */
+  if (argc < 2) {
+    fprintf(stderr, "Error: no arguments specified.\n");
+    return 1;
+  }
+
+  /* If there is only one argument, also complain and exit. */
+  if (argc == 2) {
+    fprintf(stderr,
+            "Error: no arguments specified after argument to ignore.\n");
+    return 1;
+  }
   /* Print out list of arguments; eventually, convert this to execve()*/
   for (; i < argc; ++i)
     if (strcmp(to_remove, argv[i])) {
